@@ -136,3 +136,4 @@ http://localhost:5050
 ## Conclusion
 
 This project successfully demonstrates Role-Based Access Control and Authorization. It shows how real-world applications restrict routes and features based on user roles such as Admin and User.
+
