@@ -1,8 +1,8 @@
 # Role-Based Access Control & Authorization
 
-This project is a simple Role-Based Access Control (RBAC) web application built using Node.js, Express.js, SQLite, JWT authentication, and a basic HTML/CSS/JavaScript frontend.
+This project is a simple Role-Based Access Control web application built using Node.js, Express.js, SQLite, JWT authentication, and HTML/CSS/JavaScript.
 
-The main purpose of this project is to demonstrate how different user roles such as Admin and User can access different parts of an application based on authorization rules.
+The main purpose of this project is to show how different users can access different pages based on their role.
 
 ## Features
 
@@ -10,8 +10,8 @@ The main purpose of this project is to demonstrate how different user roles such
 - User login using email and password
 - Password hashing using bcryptjs
 - JWT-based authentication
-- Protected user dashboard route
-- Admin-only route protection
+- Protected user dashboard
+- Admin-only page access
 - Role-based UI changes
 - SQLite database integration
 - Admin can view all registered users
@@ -21,13 +21,13 @@ The main purpose of this project is to demonstrate how different user roles such
 
 Admin Login:
 
-Email: admin@example.com  
-Password: Admin@123
+    Email: admin@example.com
+    Password: Admin@123
 
 User Login:
 
-Email: user@example.com  
-Password: User@123
+    Email: user@example.com
+    Password: User@123
 
 ## Technologies Used
 
@@ -44,96 +44,111 @@ Password: User@123
 
 ## Project Structure
 
-role-based-access-control/
-│
-├── database.js
-├── server.js
-├── package.json
-├── package-lock.json
-├── README.md
-├── .env.example
-├── .gitignore
-│
-└── public/
-    ├── index.html
-    ├── dashboard.html
-    ├── admin.html
-    ├── style.css
-    └── script.js
+    role-based-access-control/
+    ├── database.js
+    ├── server.js
+    ├── package.json
+    ├── package-lock.json
+    ├── README.md
+    ├── .env.example
+    ├── .gitignore
+    └── public/
+        ├── index.html
+        ├── dashboard.html
+        ├── admin.html
+        ├── style.css
+        └── script.js
 
 ## File Purpose
 
-server.js: Main backend file. It creates the Express server, handles API routes, performs JWT authentication, and protects routes based on user roles.
+### server.js
 
-database.js: Connects the application to the SQLite database. It creates the users table and inserts default Admin and User accounts.
+Main backend file. It creates the Express server, handles API routes, performs JWT authentication, and protects routes based on user roles.
 
-public/index.html: Main login and registration page. Users can login or register with either User or Admin role.
+### database.js
 
-public/dashboard.html: Protected dashboard page. Only logged-in users with a valid JWT token can access it.
+Connects the application to the SQLite database. It creates the users table and inserts default Admin and User accounts.
 
-public/admin.html: Admin-only page. Only users with the Admin role can access this page and view all registered users.
+### public/index.html
 
-public/script.js: Handles frontend logic such as registration, login, token storage, protected page access, role checking, and logout.
+Main login and registration page. Users can login or register with either User or Admin role.
 
-public/style.css: Contains styling for the login page, dashboard page, and admin panel.
+### public/dashboard.html
+
+Protected dashboard page. Only logged-in users with a valid JWT token can access it.
+
+### public/admin.html
+
+Admin-only page. Only users with the Admin role can access this page and view all registered users.
+
+### public/script.js
+
+Handles frontend logic such as registration, login, token storage, protected page access, role checking, and logout.
+
+### public/style.css
+
+Contains styling for the login page, dashboard page, and admin panel.
 
 ## Access Flow
 
-1. A user logs in using email and password.
-2. The backend verifies the user credentials.
-3. If the login is successful, a JWT token is generated.
+1. User logs in using email and password.
+2. Backend verifies the user credentials.
+3. If login is successful, a JWT token is generated.
 4. The token contains the user role.
-5. The frontend stores the token in localStorage.
+5. Frontend stores the token in localStorage.
 6. Protected pages send the token to the backend.
-7. The backend checks whether the token is valid.
+7. Backend checks whether the token is valid.
 8. Admin-only routes also check whether the user role is admin.
-9. If the user is not an admin, access is denied.
-10. The frontend also hides admin options for normal users.
+9. If the user is not admin, access is denied.
+10. Frontend hides admin options for normal users.
 
 ## API Routes
 
-POST /api/register  
-Creates a new user account.
+Register User:
 
-POST /api/login  
-Logs in the user and returns a JWT token.
+    POST /api/register
 
-GET /api/dashboard  
-Protected route. Accessible by logged-in users.
+Login User:
 
-GET /api/admin  
-Admin-only protected route. Accessible only by users with the Admin role.
+    POST /api/login
+
+User Dashboard:
+
+    GET /api/dashboard
+
+Admin Panel:
+
+    GET /api/admin
 
 ## How to Run
 
 Install dependencies:
 
-npm install
+    npm install
 
 Create a .env file:
 
-PORT=5050
-JWT_SECRET=role_based_access_control_secret_key
+    PORT=5050
+    JWT_SECRET=role_based_access_control_secret_key
 
 Start the server:
 
-npm run dev
+    npm run dev
 
 Open the app in browser:
 
-http://localhost:5050
+    http://localhost:5050
 
 ## Task Requirements Covered
 
-- Completion of authentication task
-- Backend routing implementation
-- JWT-based authorization
-- Role-based backend logic
+- Authentication system completed
+- Backend routing implemented
+- JWT-based authorization added
+- Role-based backend logic added
 - Protected routes based on user roles
 - UI changes based on user permissions
 - Documentation explaining access flow
 
 ## Conclusion
 
-This project successfully demonstrates Role-Based Access Control and Authorization. It shows how real-world applications restrict routes and features based on user roles such as Admin and User.
-
+This project successfully demonstrates Role-Based Access Control and Authorization. It shows how applications restrict routes and features based on user roles such as Admin and User.
